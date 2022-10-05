@@ -91,17 +91,9 @@ public class CaesarBreaker {
         int key2 = getKey(encreptedHalf2);
         System.out.println("Key 1: " + key1 + " - Key 2: " + key2);
         
-        String decreptedHalf1 = decrypt(encreptedHalf1, key1);
-        String decreptedHalf2 = decrypt(encreptedHalf2, key2);
-        String decrypted = "";
-        for (int i = 0; i < decreptedHalf1.length(); i++)
-        {
-            decrypted += decreptedHalf1.charAt(i);
-            if (i < decreptedHalf2.length())
-            {
-                decrypted += decreptedHalf2.charAt(i);
-            }
-        }
+        CaesarCipher cc = new CaesarCipher();
+        String decrypted = cc.encryptTwoKeys(encrypted, 26 - key1, 26 - key2);
+        
         return decrypted;
     }
     
